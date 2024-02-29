@@ -1,3 +1,12 @@
+# Just checking if the packaged game can read assets or savefiles
+# TODO: fix this!
+try:
+    with open("saves/player.save", "rb") as fSavePlayer:
+        print(fSavePlayer)
+        sys.exit(1)
+except FileNotFoundError:
+    print("Error loading save files, the game will most likely fail to load.")
+
 import pygame, sys
 from pygame.locals import *
 from pytmx.util_pygame import load_pygame
