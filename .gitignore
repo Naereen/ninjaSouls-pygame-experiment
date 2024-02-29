@@ -3,3 +3,6 @@ build/
 __pycache__/
 *pygbag*
 *~
+*.log
+dist/
+*.prof
