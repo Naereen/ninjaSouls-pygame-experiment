@@ -1,9 +1,10 @@
+import os
 import pygame
 from pytmx.util_pygame import load_pygame
 from globals import *
 from inputs import *
 
-mainMenuMap = load_pygame("maps/MenuBackground.tmx")
+mainMenuMap = load_pygame(os.path.dirname(__file__) + "/maps/MenuBackground.tmx")
 
 class MainMenu:
     def __init__(self, windowSize):
@@ -12,8 +13,8 @@ class MainMenu:
             if hasattr(layer, "data"):
                 for x, y, surf in layer.tiles():
                     self.mainMenuBackground.blit(pygame.transform.scale(surf, size), (x * size[0], y * size[1]))
-        self.buttonImage = pygame.image.load("assets/NinjaAdventure/HUD/Dialog/DialogueBoxSimple.png")
-        self.buttonImageHovered = pygame.image.load("assets/NinjaAdventure/HUD/Dialog/DialogBox.png")
+        self.buttonImage = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Dialog/DialogueBoxSimple.png")
+        self.buttonImageHovered = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Dialog/DialogBox.png")
 
         self.buttons = {
             "startGame": {"pos": (0, 0), "size": (1000, 200), "neighborDown": "quitGame", "text": "Start Game!"},
@@ -26,8 +27,8 @@ class MainMenu:
             self.buttons[button]["sprite"] = pygame.transform.scale(self.buttonImage, self.buttons[button]["size"])
             self.buttons[button]["spriteHovered"] = pygame.transform.scale(self.buttonImageHovered, self.buttons[button]["size"])
         
-        self.acceptSound = pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Menu/Accept.wav")
-        self.changeHoveredSound = pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Menu/Menu1.wav")
+        self.acceptSound = pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Menu/Accept.wav")
+        self.changeHoveredSound = pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Menu/Menu1.wav")
     
     def update(self, joystick):
         keysPressed = pygame.key.get_pressed()

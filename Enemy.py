@@ -1,12 +1,13 @@
+import os
 from typing import Any
 import pygame, math, random
 from globals import *
 
 SQRT2 = math.sqrt(2)
 
-spriteSheetBeast = pygame.image.load("assets/NinjaAdventure/Actor/Monsters/Beast/Beast.png").convert_alpha()
-spriteSheetSlime = pygame.image.load("assets/NinjaAdventure/Actor/Monsters/Slime/Slime.png").convert_alpha()
-spriteSheetDeath = pygame.image.load("assets/NinjaAdventure/FX/Magic/Circle/SpriteSheetSpark.png").convert_alpha()
+spriteSheetBeast = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Monsters/Beast/Beast.png").convert_alpha()
+spriteSheetSlime = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Monsters/Slime/Slime.png").convert_alpha()
+spriteSheetDeath = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/FX/Magic/Circle/SpriteSheetSpark.png").convert_alpha()
 spriteSize = mapTileSize.x
 deathSize = 32
 
@@ -61,8 +62,8 @@ class Enemy(pygame.sprite.Sprite):
         }
     }
     sounds = {
-            "hit": pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Hit.wav"),
-            "dead": pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Kill.wav")
+            "hit": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Hit.wav"),
+            "dead": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Kill.wav")
         }
     def __init__(self, pos, size, type, dead, groups):
         super().__init__(groups)

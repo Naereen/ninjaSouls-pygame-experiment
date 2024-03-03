@@ -1,15 +1,16 @@
+import os
 import pygame, math, random
 from globals import *
 
 SQRT2 = math.sqrt(2)
 
-spriteSheetVillager2Idle = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager2/SeparateAnim/Idle.png").convert_alpha()
-spriteSheetVillager2Walk = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager2/SeparateAnim/Walk.png").convert_alpha()
-spriteSheetVillager3Idle = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager3/SeparateAnim/Idle.png").convert_alpha()
-spriteSheetVillager3Walk = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager3/SeparateAnim/Walk.png").convert_alpha()
-spriteSheetVillager4Idle = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager4/SeparateAnim/Idle.png").convert_alpha()
-spriteSheetVillager4Walk = pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager4/SeparateAnim/Walk.png").convert_alpha()
-spriteSheetCat = pygame.image.load("assets/NinjaAdventure/Actor/Animals/Cat/SpriteSheet.png").convert_alpha()
+spriteSheetVillager2Idle = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager2/SeparateAnim/Idle.png").convert_alpha()
+spriteSheetVillager2Walk = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager2/SeparateAnim/Walk.png").convert_alpha()
+spriteSheetVillager3Idle = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager3/SeparateAnim/Idle.png").convert_alpha()
+spriteSheetVillager3Walk = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager3/SeparateAnim/Walk.png").convert_alpha()
+spriteSheetVillager4Idle = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager4/SeparateAnim/Idle.png").convert_alpha()
+spriteSheetVillager4Walk = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager4/SeparateAnim/Walk.png").convert_alpha()
+spriteSheetCat = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Animals/Cat/SpriteSheet.png").convert_alpha()
 spriteSize = mapTileSize.x
 
 class NPC(pygame.sprite.Sprite):
@@ -31,7 +32,7 @@ class NPC(pygame.sprite.Sprite):
                 "max": 4,
                 "speed": 3
             },
-            "face": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager2/Faceset.png"), (128, 128))
+            "face": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager2/Faceset.png"), (128, 128))
         },
         "Villager3": {
             "idle": {
@@ -50,7 +51,7 @@ class NPC(pygame.sprite.Sprite):
                 "max": 4,
                 "speed": 3
             },
-            "face": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager3/Faceset.png"), (128, 128))
+            "face": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager3/Faceset.png"), (128, 128))
         },
         "Villager4": {
             "idle": {
@@ -69,7 +70,7 @@ class NPC(pygame.sprite.Sprite):
                 "max": 4,
                 "speed": 3
             },
-            "face": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Actor/Characters/Villager4/Faceset.png"), (128, 128))
+            "face": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/Villager4/Faceset.png"), (128, 128))
         },
         "Cat": {
             "idle": {
@@ -88,7 +89,7 @@ class NPC(pygame.sprite.Sprite):
                 "max": 2,
                 "speed": 2
             },
-            "face": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Actor/Animals/Cat/Faceset.png"), (128, 128))
+            "face": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Animals/Cat/Faceset.png"), (128, 128))
         }
     }
 
