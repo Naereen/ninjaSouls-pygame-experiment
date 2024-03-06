@@ -1,12 +1,12 @@
 import pygame, pickle
 import mapLoader
-from os.path import isfile
+from os.path import isfile, dirname
 
 mapTileSize = pygame.math.Vector2(16, 16)
 size = (64, 64)
 
-fontTalk = pygame.font.Font("assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 32)
-fontMenu = pygame.font.Font("assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 128)
+fontTalk = pygame.font.Font(dirname(__file__) + "/assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 32)
+fontMenu = pygame.font.Font(dirname(__file__) + "/assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 128)
 
 savePathPlayer = "saves/player.save"
 savePathWorld = "saves/world.save"

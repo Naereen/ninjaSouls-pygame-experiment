@@ -6,26 +6,9 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        # ( "assets/NinjaAdventure/HUD/Font/NormalFont.ttf", "." ),
-        # ( "assets/NinjaAdventure/HUD/Font/NormalFont.ttf", "assets/NinjaAdventure/HUD/Font/" ),
-
-        # ( "assets/**/*.gif", "." ),
-        # ( "assets/**/*.md", "." ),
-        # ( "assets/**/*.ogg", "." ),
-        # ( "assets/**/*.png", "." ),
-        # ( "assets/**/*.ttf", "." ),
-        # ( "assets/**/*.txt", "." ),
-        # ( "assets/**/*.wav", "." ),
-
-        # # ( "assets/", "." ),
-        # # ( "assets/", "assets" ),
-        ( "./assets", "./assets" ),  # TODO:
-        # # ( "assets/", "assets/" ),
-
-        # ( "saves/", "." ),
-        # ( "saves/", "saves" ),
+        ( "./assets", "./assets" ),
+        ( "./maps", "./maps" ),
         ( "./saves", "./saves" ),
-        # ( "saves/", "saves/" ),
     ],
     hiddenimports=[],
     hookspath=[],

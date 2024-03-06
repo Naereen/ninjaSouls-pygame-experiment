@@ -1,7 +1,8 @@
+import os
 import pygame, math, random
 from globals import *
 
-leafSpriteSheet = pygame.image.load("assets/NinjaAdventure/FX/Particle/Grass.png")
+leafSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/FX/Particle/Grass.png")
 leafSpriteSize = (12, 13)
 leafSprites = [pygame.transform.scale(leafSpriteSheet.subsurface(pygame.Rect(leafSpriteSize[0] * x, leafSpriteSize[1] * 0, leafSpriteSize[0], leafSpriteSize[1])), (size[0], size[1])) for x in range(0, 6)]
 

@@ -1,12 +1,4 @@
-# Just checking if the packaged game can read assets or savefiles
-# TODO: fix this!
-try:
-    with open("saves/player.save", "rb") as fSavePlayer:
-        print(fSavePlayer)
-        sys.exit(1)
-except FileNotFoundError:
-    print("Error loading save files, the game will most likely fail to load.")
-
+import os
 import pygame, sys
 from pygame.locals import *
 from pytmx.util_pygame import load_pygame
@@ -26,11 +18,11 @@ from Enemy import *
 from Item import *
 from Menu import *
 
-littleChestSprite = pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png").subsurface(pygame.rect.Rect(0, 0, 16, 16)), (64, 64))
-littleChestOpenSprite = pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png").subsurface(pygame.rect.Rect(16, 0, 16, 16)), (64, 64))
+littleChestSprite = pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png").subsurface(pygame.rect.Rect(0, 0, 16, 16)), (64, 64))
+littleChestOpenSprite = pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Treasure/LittleTreasureChest.png").subsurface(pygame.rect.Rect(16, 0, 16, 16)), (64, 64))
 
 def main():
-    overworldMapPath = "maps/test.tmx"
+    overworldMapPath = os.path.dirname(__file__) + "/maps/test.tmx"
     # mapData = load_pygame(overworldMapPath)
     scaleTo = (64, 64)
     k = pygame.math.Vector2(scaleTo[0] / mapTileSize.x, scaleTo[1] / mapTileSize.y)
@@ -38,10 +30,10 @@ def main():
     # mapSize = (scaleTo[0] * 60, scaleTo[1] * 60)
 
     music = {
-        "adventureBegins": pygame.mixer.Sound("assets/NinjaAdventure/Musics/1 - Adventure Begin.ogg"),
-        "theCave": pygame.mixer.Sound("assets/NinjaAdventure/Musics/2 - The Cave.ogg"),
-        "fight": pygame.mixer.Sound("assets/NinjaAdventure/Musics/17 - Fight.ogg"),
-        "goodTime": pygame.mixer.Sound("assets/NinjaAdventure/Musics/20 - Good Time.ogg"),
+        "adventureBegins": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Musics/1 - Adventure Begin.ogg"),
+        "theCave": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Musics/2 - The Cave.ogg"),
+        "fight": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Musics/17 - Fight.ogg"),
+        "goodTime": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Musics/20 - Good Time.ogg"),
     }
     whichMusic = "none"
 
@@ -87,7 +79,7 @@ def main():
                 if area == "Overworld":
                     mapSprites, mapSpritesFront, enemiesGroup, walls, musicAreas, doorAreas, doorDestinations, NPCsGroup, itemsGroup, cuttableGrass, breakableRocks, treasureChests = changeMap(overworldMapPath, scaleTo[0], scaleTo[1], mapTileSize)
                 else:
-                    mapSprites, mapSpritesFront, enemiesGroup, walls, musicAreas, doorAreas, doorDestinations, NPCsGroup, itemsGroup, cuttableGrass, breakableRocks, treasureChests = changeMap("maps/subAreas/" + area + ".tmx", scaleTo[0], scaleTo[1], mapTileSize)
+                    mapSprites, mapSpritesFront, enemiesGroup, walls, musicAreas, doorAreas, doorDestinations, NPCsGroup, itemsGroup, cuttableGrass, breakableRocks, treasureChests = changeMap(os.path.dirname(__file__) + "/maps/subAreas/" + area + ".tmx", scaleTo[0], scaleTo[1], mapTileSize)
 
                 if enemies != -1:
                     enemiesGroup = enemies
@@ -230,7 +222,7 @@ def main():
                 player.rect.topleft = doorDestinations[doorEntered]
                 enemies, items, breakableRocksLoad, treasureChestsLoad, area, worldSave = loadGame(player, Enemy, Item, "Overworld")
             else:
-                mapSprites, mapSpritesFront, enemiesGroup, walls, musicAreas, doorAreas, doorDestinations, NPCsGroup, itemsGroup, cuttableGrass, breakableRocks, treasureChests = changeMap("maps/subAreas/" + doorEntered + ".tmx", scaleTo[0], scaleTo[1], mapTileSize)
+                mapSprites, mapSpritesFront, enemiesGroup, walls, musicAreas, doorAreas, doorDestinations, NPCsGroup, itemsGroup, cuttableGrass, breakableRocks, treasureChests = changeMap(os.path.dirname(__file__) + "/maps/subAreas/" + doorEntered + ".tmx", scaleTo[0], scaleTo[1], mapTileSize)
                 player.rect.topleft = doorDestinations[doorEntered]
                 enemies, items, breakableRocksLoad, treasureChestsLoad, area, worldSave = loadGame(player, Enemy, Item, doorEntered)
 

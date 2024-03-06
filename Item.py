@@ -1,14 +1,15 @@
+import os
 import pygame
 from globals import *
 
 class Item(pygame.sprite.Sprite):
     types = {
-        "potionHealth": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Potion/LifePot.png"), (size[0] / 2, size[1] / 2)),
-        "plantSpell": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Scroll/ScrollPlant.png"), (size[0] / 2, size[1] / 2)),
-        "heart": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/HUD/Heart.png").subsurface(pygame.rect.Rect(0, 0, 16, 16)), (size[0] / 2, size[1] / 2)),
-        "pickaxe": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Pickaxe/Sprite.png"), (size[0] / 2, size[1] / 2)),
-        "axe": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Axe/Sprite.png"), (size[0] / 2, size[1] / 2)),
-        "coin": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), (size[0] / 2, size[1] / 2)),
+        "potionHealth": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Potion/LifePot.png"), (size[0] / 2, size[1] / 2)),
+        "plantSpell": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Scroll/ScrollPlant.png"), (size[0] / 2, size[1] / 2)),
+        "heart": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Heart.png").subsurface(pygame.rect.Rect(0, 0, 16, 16)), (size[0] / 2, size[1] / 2)),
+        "pickaxe": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Pickaxe/Sprite.png"), (size[0] / 2, size[1] / 2)),
+        "axe": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Axe/Sprite.png"), (size[0] / 2, size[1] / 2)),
+        "coin": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), (size[0] / 2, size[1] / 2)),
     }
     def __init__(self, pos, type, dead, groups, alreadyCentered=False, price=-1, amount=1, category=-1, initialVelocity=-1, rotation=-1):
         super().__init__(groups)

@@ -1,3 +1,4 @@
+import os
 import pygame, math, random
 from inputs import *
 from globals import *
@@ -20,11 +21,11 @@ class Player():
         self.zoom = 1
 
         spriteSize = mapTileSize.x
-        idleSpriteSheet = pygame.image.load("assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Idle.png").convert_alpha()
-        walkSpriteSheet = pygame.image.load("assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Walk.png").convert_alpha()
-        attackSpriteSheet = pygame.image.load("assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Attack.png").convert_alpha()
-        spriteSheetDeath = pygame.image.load("assets/NinjaAdventure/FX/Magic/Circle/SpriteSheetOrange.png").convert_alpha()
-        spriteSheetItem = pygame.image.load("assets/NinjaAdventure/FX/Magic/Spirit/SpriteSheetBlue.png").convert_alpha()
+        idleSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Idle.png").convert_alpha()
+        walkSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Walk.png").convert_alpha()
+        attackSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Actor/Characters/GreenNinja/SeparateAnim/Attack.png").convert_alpha()
+        spriteSheetDeath = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/FX/Magic/Circle/SpriteSheetOrange.png").convert_alpha()
+        spriteSheetItem = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/FX/Magic/Spirit/SpriteSheetBlue.png").convert_alpha()
         deathSize = 32
         self.animations = {
             "idle": {
@@ -63,7 +64,7 @@ class Player():
         self.direction = "down"
         # self.directionVector = pygame.math.Vector2(0, 1)
 
-        heartSpriteSheet = pygame.image.load("assets/NinjaAdventure/HUD/Heart.png").convert_alpha()
+        heartSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Heart.png").convert_alpha()
         heartSpriteSize = 16
         self.heartSize = (128, 128)
         self.heartSprites = [pygame.transform.scale(heartSpriteSheet.subsurface(pygame.Rect(heartSpriteSize * x, heartSpriteSize * 0, heartSpriteSize, heartSpriteSize)), self.heartSize) for x in range(0, 5)]
@@ -82,14 +83,14 @@ class Player():
         self.weaponOffseX = 5
 
         self.weapons = {
-            "katana": {"sprite": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Katana/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
-                       "spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Katana/Sprite.png"), self.heartSize),  
+            "katana": {"sprite": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Katana/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
+                       "spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Katana/Sprite.png"), self.heartSize),  
                        "damage": 1, "knockback": 500, "unlocked": True},
-            "axe": {"sprite": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Axe/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
-                    "spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Axe/Sprite.png"), self.heartSize), 
+            "axe": {"sprite": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Axe/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
+                    "spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Axe/Sprite.png"), self.heartSize), 
                     "damage": 2, "knockback": 700, "unlocked": False},
-            "pickaxe": {"sprite": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Pickaxe/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
-                    "spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Weapons/Pickaxe/Sprite.png"), self.heartSize), 
+            "pickaxe": {"sprite": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Pickaxe/SpriteInHand.png"), (math.floor(size[0] / 2), math.floor(size[1] / 2))),
+                    "spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Weapons/Pickaxe/Sprite.png"), self.heartSize), 
                     "damage": 1, "knockback": 300, "unlocked": False}
         }
         self.weaponIndex = 0
@@ -121,9 +122,9 @@ class Player():
         self.startDeathTimerOnce = False
 
         self.sounds = {
-            "attack": pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Sword2.wav"),
-            "gameOver": pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/GameOver.wav"),
-            "hit": pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Explosion.wav"),
+            "attack": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Sword2.wav"),
+            "gameOver": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/GameOver.wav"),
+            "hit": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Explosion.wav"),
         }
         self.sounds["attack"].set_volume(0.3)
         self.sounds["hit"].set_volume(0.3)
@@ -134,28 +135,28 @@ class Player():
         self.talkSpeed = 15
         self.talkSpeedNormal = self.talkSpeed
         self.talkSpeedFast = 120
-        self.talkSounds = [pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Voice4.wav"), 
-                           pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Voice1.wav"),
-                           pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Voice3.wav"),
-                           pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/Voice2.wav")]
+        self.talkSounds = [pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Voice4.wav"), 
+                           pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Voice1.wav"),
+                           pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Voice3.wav"),
+                           pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/Voice2.wav")]
         self.dialogueText = ""
         self.talkInputOnce = False
         self.NPCFace = -1
         windowSize = pygame.display.get_window_size()
-        self.dialogBox = pygame.image.load("assets/NinjaAdventure/HUD/Dialog/DialogBox.png")
+        self.dialogBox = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Dialog/DialogBox.png")
         self.dialogBox = pygame.transform.scale(self.dialogBox, (windowSize[0], self.dialogBox.get_height() + 50))
 
-        plantSpellSpriteSheet = pygame.image.load("assets/NinjaAdventure/FX/Elemental/Plant/SpriteSheet.png")
+        plantSpellSpriteSheet = pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/FX/Elemental/Plant/SpriteSheet.png")
         self.items = {
-            "plantSpell": {"spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Scroll/ScrollPlant.png"), self.heartSize), "sound": pygame.mixer.Sound("assets/swish-2.wav"), "hitbox": pygame.rect.Rect((0, 0), (size[0] * 2.5, size[1] * 2.5)), "damage": 4, "knockback": 800, "amount": 0, "unlocked": True},
-            "potionHealth": {"spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Potion/LifePot.png"), self.heartSize), "healAmount": 4, "amount": 1, "unlocked": True},
-            "coin": {"spriteMenu": pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), self.heartSize), "amount": 0, "unlocked": True}
+            "plantSpell": {"spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Scroll/ScrollPlant.png"), self.heartSize), "sound": pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/swish-2.wav"), "hitbox": pygame.rect.Rect((0, 0), (size[0] * 2.5, size[1] * 2.5)), "damage": 4, "knockback": 800, "amount": 0, "unlocked": True},
+            "potionHealth": {"spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Potion/LifePot.png"), self.heartSize), "healAmount": 4, "amount": 1, "unlocked": True},
+            "coin": {"spriteMenu": pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), self.heartSize), "amount": 0, "unlocked": True}
         }
         self.equipedItem = "potionHealth"
         self.changeItemOnce = False
         self.itemIndex = 0
         self.itemIndexMax = 3
-        self.itemPickupSound = pygame.mixer.Sound("assets/NinjaAdventure/Sounds/Game/PowerUp1.wav")
+        self.itemPickupSound = pygame.mixer.Sound(os.path.dirname(__file__) + "/assets/NinjaAdventure/Sounds/Game/PowerUp1.wav")
         self.usingItem = False
         self.useItemInputOnce = False
         plantSpellSpriteSize = 28

@@ -1,3 +1,4 @@
+import os
 import pygame, math
 from pygame.surface import Surface
 from Enemy import Enemy
@@ -6,9 +7,9 @@ from Item import Item
 from CuttableGrass import CuttableGrass
 from pytmx.util_pygame import load_pygame
 
-coinSprite = pygame.transform.scale(pygame.image.load("assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), (16, 16))
+coinSprite = pygame.transform.scale(pygame.image.load(os.path.dirname(__file__) + "/assets/NinjaAdventure/Items/Treasure/GoldCoin.png"), (16, 16))
 coinHeight = coinSprite.get_height()
-fontPrice = pygame.font.Font("assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 32)
+fontPrice = pygame.font.Font(os.path.dirname(__file__) + "/assets/NinjaAdventure/HUD/Font/NormalFont.ttf", 32)
 priceOffsetY = 32
 priceOffsetX = 8
 
